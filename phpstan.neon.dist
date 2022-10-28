@@ -1,0 +1,22 @@
+includes:
+    - ./vendor/knplabs/doctrine-behaviors/phpstan-extension.neon
+
+parameters:
+    parallel:
+        maximumNumberOfProcesses: 1
+    inferPrivatePropertyTypeFromConstructor: true
+    checkGenericClassInNonGenericObjectType: false
+    level: 7
+    paths:
+            - src
+    reportUnmatchedIgnoredErrors: false
+    doctrine:
+        objectManagerLoader: ci/phpstan/doctrine-loader.php
+    symfony:
+        container_xml_path: var/cache/dev/srcApp_KernelDevDebugContainer.xml
+        console_application_loader: ci/phpstan/console-loader.php
+    excludePaths:
+        analyse:
+            - '**/Migrations/Version*.php'
+            - '**/Kernel.php'
+            - '**/Application/*'
